@@ -7,7 +7,7 @@ This project builds a deep learning model to classify images of various skin dis
 ## 📊 Dataset
 
 - **Source**: [Skin Disease Dataset on Kaggle](https://www.kaggle.com/datasets/subirbiswas19/skin-disease-dataset)
-- **Classes**: Multiple skin disease categories such as eczema, psoriasis, acne, etc.
+- **Classes**: Multiple skin disease categories such as eczema, psoriasis, acne, etc. (number of classes-8)
 - **Format**: Images organized into folders per disease class
 
 ---
@@ -16,7 +16,8 @@ This project builds a deep learning model to classify images of various skin dis
 
 - Images are standardized using `EfficientNetB0`'s `preprocess_input()` method.
 - Labels are transformed using `LabelEncoder` and then one-hot encoded using `to_categorical`.
-- Dataset split into training and validation sets (e.g., using `train_test_split` with stratification).
+- Dataset split into training and validation sets using `train_test_split` with stratification to maintain class balance.
+- Data Augmentation: A range of augmentation techniques (e.g., rotation, shift, flip, zoom) are applied to improve model generalization and handle variations in real-world images.
 
 ---
 
@@ -52,12 +53,21 @@ Training was stopped at **epoch 35** as **validation loss** did not improve from
 
 ---
 
-### 📉 Training and Validation Metrics
+### 📈 Accuracy Graph
+![Training and Validation Accuracy](assets/accuracy_graph.png)
+
+### 📉 Loss Graph
+![Training and Validation Loss](assets/loss_graph.png)
+
+### 🧩 Confusion Matrix
+![Confusion Matrix](assets/confusion_matrix.png)
+
+### 🧑‍💻 Training and Validation Metrics
 
 | Epochs | Training Accuracy | Validation Accuracy | Training Loss | Validation Loss |
 |--------|-------------------|---------------------|---------------|-----------------|
 | 35     | 99.92%            | 94.02%              | 0.0008        | 0.1039          |
 
-> 📌 Note: Model shows excellent generalization with minimal overfitting.
+> 📌 Note: Model shows excellent generalization with minimal overfitting. Further analysis of the confusion matrix can help identify if any specific classes need improvement
 
 ---
